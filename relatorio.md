@@ -17,9 +17,9 @@ Resposta: Os componentes ficaram separados, um por arquivo, com nomes em portugu
 
 ## Missão 1 · Adicionar
 M1.1 Como o app trata "12,50" com vírgula? Quem decidiu isso: você ou o agente?
-Resposta:
+Resposta: O agente propôs aceitar a vírgula e guardar o valor em centavos. Assim, 12,50 vira 1250 centavos e aparece como R$ 12,50 na lista.
 M1.2 Quantas tool calls a missão usou?
-Resposta:
+Resposta: Foram 10 chamadas na implementação e no fechamento da missão, da leitura de App.jsx até o commit, incluindo edição, testes e relatório. A preparação e o commit do layout ficaram fora dessa contagem.
 
 ## Missão 2 · Total
 M2.1 Quanto deu 0,10 + 0,20 no app?

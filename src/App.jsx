@@ -1,9 +1,19 @@
+import { useState } from 'react'
 import FormularioGasto from './components/FormularioGasto'
 import ListaGastos from './components/ListaGastos'
 import TotalGastos from './components/TotalGastos'
 import './App.css'
 
 function App() {
+  const [gastos, definirGastos] = useState([])
+
+  function adicionarGasto(novoGasto) {
+    definirGastos((gastosAtuais) => [
+      ...gastosAtuais,
+      { ...novoGasto, id: crypto.randomUUID() },
+    ])
+  }
+
   return (
     <main className="aplicativo">
       <header className="cabecalho">
@@ -15,10 +25,10 @@ function App() {
       </header>
 
       <div className="area-principal">
-        <FormularioGasto />
+        <FormularioGasto aoAdicionar={adicionarGasto} />
         <div className="resumo-gastos">
           <TotalGastos />
-          <ListaGastos />
+          <ListaGastos gastos={gastos} />
         </div>
       </div>
     </main>
