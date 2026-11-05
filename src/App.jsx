@@ -1,11 +1,16 @@
 import { useState } from 'react'
 import FormularioGasto from './components/FormularioGasto'
+import FiltroCategorias from './components/FiltroCategorias'
 import ListaGastos from './components/ListaGastos'
 import TotalGastos from './components/TotalGastos'
 import './App.css'
 
 function App() {
   const [gastos, definirGastos] = useState([])
+  const [categoriaSelecionada, definirCategoriaSelecionada] = useState('Todas')
+  const gastosVisiveis = categoriaSelecionada === 'Todas'
+    ? gastos
+    : gastos.filter((gasto) => gasto.categoria === categoriaSelecionada)
 
   function adicionarGasto(novoGasto) {
     definirGastos((gastosAtuais) => [
@@ -31,8 +36,16 @@ function App() {
       <div className="area-principal">
         <FormularioGasto aoAdicionar={adicionarGasto} />
         <div className="resumo-gastos">
-          <TotalGastos gastos={gastos} />
-          <ListaGastos gastos={gastos} aoRemover={removerGasto} />
+          <TotalGastos gastos={gastosVisiveis} categoria={categoriaSelecionada} />
+          <FiltroCategorias
+            categoria={categoriaSelecionada}
+            aoAlterar={definirCategoriaSelecionada}
+          />
+          <ListaGastos
+            gastos={gastosVisiveis}
+            aoRemover={removerGasto}
+            categoria={categoriaSelecionada}
+          />
         </div>
       </div>
     </main>

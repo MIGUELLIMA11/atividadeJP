@@ -1,4 +1,4 @@
-function ListaGastos({ gastos, aoRemover }) {
+function ListaGastos({ gastos, aoRemover, categoria }) {
   return (
     <section className="lista-gastos" aria-labelledby="titulo-lista">
       <div className="cabecalho-lista">
@@ -34,7 +34,11 @@ function ListaGastos({ gastos, aoRemover }) {
           </li>
         ))}
       </ul>
-      {gastos.length === 0 && <p className="lista-vazia">Nenhum gasto registrado.</p>}
+      {gastos.length === 0 && (
+        <p className="lista-vazia">
+          {categoria === 'Todas' ? 'Nenhum gasto registrado.' : 'Nenhum gasto nesta categoria.'}
+        </p>
+      )}
     </section>
   )
 }

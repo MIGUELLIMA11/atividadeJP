@@ -155,6 +155,10 @@ input::placeholder {
   padding-top: 28px;
 }
 
+.filtro-categorias {
+  margin-top: 24px;
+}
+
 .cabecalho-lista {
   display: flex;
   justify-content: space-between;

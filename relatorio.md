@@ -35,9 +35,9 @@ Resposta: Cada gasto recebe um id único quando é adicionado. O botão passa es
 
 ## Missão 4 · Filtrar
 M4.1 Qual foi o seu prompt da tentativa B?
-Resposta:
+Resposta: Pedi ao agente para redigir o prompt B: "Coloque um filtro acima da lista com Todas, Alimentação, Transporte, Lazer e Outros. Mostre só os gastos da categoria e seu total. Ao adicionar outra categoria, mantenha o filtro e guarde o gasto para aparecer quando eu trocar a seleção."
 M4.2 Qual tentativa gerou o melhor plano, A ou B? Por quê?
-Resposta:
+Resposta: Seguimos o plano B porque o pedido ficou mais preciso sobre a posição do filtro, as opções, o total e os gastos de outra categoria. O plano A já sugeria filtrar por categoria pelo contexto, mas dependia mais das escolhas do agente. Só o plano B foi implementado.
 
 ## Bônus · Salvar
 B.1 Onde o localStorage guarda os dados?
