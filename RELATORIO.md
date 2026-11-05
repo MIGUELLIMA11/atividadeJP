@@ -3,56 +3,60 @@
 Nome: Miguel
 Modelo usado: GitHub Copilot no VS Code; o modelo selecionado nesta conversa não foi confirmado. No OpenCode, tentei GPT-5.3 Codex e Claude Sonnet, mas as chamadas falharam.
 
-Nota: continuei pelo Copilot após os erros de conexão e certificados do OpenCode. Autorizei o agente a redigir as respostas e o prompt B. A reflexão abaixo é um texto de apoio e precisa ser revisada por mim para representar meu entendimento.
+## Observação sobre a ferramenta
+
+Comecei tentando fazer a atividade pelo OpenCode. Instalei a ferramenta, consegui abrir e tentei usar o GPT-5.3 Codex e o Claude Sonnet pelo GitHub Copilot, mas os pedidos falharam com a mensagem "Failed to process error response". Também não consegui acessar o portal do Foundry. Na investigação apareceram erros de conexão e de validação de certificados; não foi possível confirmar a causa exata dentro do OpenCode.
+
+Como o prazo de entrega estava próximo, continuei pelo GitHub Copilot no VS Code. O /init do OpenCode não chegou a concluir. Mantivemos o desenvolvimento por etapas, com plano antes da implementação, testes no navegador e commits separados. As respostas foram organizadas com ajuda do agente, inclusive o texto do prompt B, e essa troca de ferramenta precisa ser considerada na avaliação.
 
 ## Passo 1 · AGENTS.md
 1.1 O que o /init descobriu sozinho sobre o projeto?
-Resposta: Tentei executar o /init no OpenCode, mas ele apresentou erros de conexão e não concluiu a análise. Continuei com o Copilot, que identificou React + Vite, JavaScript/JSX e Oxlint, sem um comando de testes configurado
+Resposta: O /init não concluiu por causa dos erros no OpenCode. Depois, com o Copilot, foram identificados React + Vite, arquivos JavaScript/JSX e Oxlint. Também foi identificado que o projeto não tinha um comando de testes configurado.
 1.2 Qual regra você adicionou ao AGENTS.md e por quê?
-Resposta: Adotei a regra sugerida "Não altere arquivos fora da missão atual", para manter cada etapa pequena e facilitar a revisão das mudanças. Pedi ao agente para adicioná-la ao arquivo.
+Resposta: Adotei a sugestão "Não altere arquivos fora da missão atual" e pedi ao agente para adicioná-la. A ideia era evitar mudanças desnecessárias e conseguir acompanhar melhor cada etapa.
 
 ## Passo 2 · Estrutura
 2.1 Quais arquivos o plano criou ou alterou?
-Resposta: Criamos FormularioGasto.jsx, ListaGastos.jsx e TotalGastos.jsx em src/components e alteramos App.jsx, App.css e index.css dentro de src.
+Resposta: Foram criados FormularioGasto.jsx, ListaGastos.jsx e TotalGastos.jsx na pasta src/components. Também foram alterados App.jsx, App.css e index.css para montar a tela e ajustar o visual.
 2.2 Qual regra do AGENTS.md você viu sendo aplicada?
-Resposta: Os componentes ficaram separados, um por arquivo, com nomes em português e sem instalar bibliotecas novas.
+Resposta: Os componentes ficaram separados, um por arquivo, e com nomes em português. Também não foram instaladas bibliotecas novas.
 
 ## Missão 1 · Adicionar
 M1.1 Como o app trata "12,50" com vírgula? Quem decidiu isso: você ou o agente?
-Resposta: O agente propôs aceitar a vírgula e guardar o valor em centavos. Assim, 12,50 vira 1250 centavos e aparece como R$ 12,50 na lista.
+Resposta: O app aceita 12,50 e transforma esse valor em 1250 centavos para guardar e calcular. Na lista, ele aparece como R$ 12,50. Essa solução foi proposta pelo agente.
 M1.2 Quantas tool calls a missão usou?
 Resposta: Foram 10 chamadas na implementação e no fechamento da missão, da leitura de App.jsx até o commit, incluindo edição, testes e relatório. A preparação e o commit do layout ficaram fora dessa contagem.
 
 ## Missão 2 · Total
 M2.1 Quanto deu 0,10 + 0,20 no app?
-Resposta: No teste do navegador deu R$ 0,30. O app soma 10 e 20 centavos e só depois formata o resultado em reais.
+Resposta: Deu R$ 0,30 no teste feito pelo agente no navegador. Isso acontece porque o app soma 10 e 20 centavos e depois mostra o resultado em reais.
 M2.2 Por que 0.1 + 0.2 não dá exatamente 0.3 no JavaScript?
-Resposta: Porque o JavaScript guarda os números em ponto flutuante binário, e 0.1 e 0.2 não têm representação exata nesse formato. A soma acaba ficando 0.30000000000000004. No app, usamos centavos inteiros para evitar esse problema.
+Resposta: O JavaScript representa os números em binário, e alguns valores decimais ficam aproximados. Por isso, 0.1 + 0.2 resulta em 0.30000000000000004. Para não depender dessa aproximação no cálculo dos gastos, usamos centavos inteiros.
 
 ## Missão 3 · Remover
 M3.1 O agente mudou algo que você não pediu? O quê?
-Resposta: O diff ficou limitado à remoção: função no App, botão na lista e estilos desse botão. Não mudou a validação do formulário nem adicionou outra funcionalidade.
+Resposta: Não houve mudança fora do necessário para essa missão. Foram adicionados a função de remover, o botão de cada gasto e os estilos dele. A validação do formulário continuou igual.
 M3.2 Como o código sabe qual gasto remover?
-Resposta: Cada gasto recebe um id único quando é adicionado. O botão passa esse id para a função de remover, que mantém na lista só os gastos com ids diferentes. Não depende da descrição nem da posição.
+Resposta: Cada gasto tem um id único. Quando clico em remover, o botão envia esse id e o App tira apenas o gasto correspondente. Assim, gastos com a mesma descrição não são confundidos.
 
 ## Missão 4 · Filtrar
 M4.1 Qual foi o seu prompt da tentativa B?
 Resposta: Pedi ao agente para redigir o prompt B: "Coloque um filtro acima da lista com Todas, Alimentação, Transporte, Lazer e Outros. Mostre só os gastos da categoria e seu total. Ao adicionar outra categoria, mantenha o filtro e guarde o gasto para aparecer quando eu trocar a seleção."
 M4.2 Qual tentativa gerou o melhor plano, A ou B? Por quê?
-Resposta: Seguimos o plano B porque o pedido ficou mais preciso sobre a posição do filtro, as opções, o total e os gastos de outra categoria. O plano A já sugeria filtrar por categoria pelo contexto, mas dependia mais das escolhas do agente. Só o plano B foi implementado.
+Resposta: Seguimos o B, porque ele deixou claro onde o filtro ficaria e como a lista e o total deveriam se comportar. O A já aproveitava o contexto da atividade, mas deixava mais detalhes por conta do agente. Só o plano B foi implementado.
 
 ## Bônus · Salvar
 B.1 Onde o localStorage guarda os dados?
-Resposta: No armazenamento local do perfil do navegador, separado pela origem do site, que inclui protocolo, endereço e porta. O app salva os gastos como texto JSON, sem precisar de um servidor.
+Resposta: Os dados ficam no armazenamento local do perfil do navegador. O app transforma a lista em texto JSON e salva ali, separado pelo protocolo, endereço e porta do site. Não precisa de um servidor para isso.
 B.2 Por que os gastos não aparecem em outro navegador?
-Resposta: Porque cada navegador e perfil tem seu próprio armazenamento, sem sincronização pelo app. Trocar a porta ou usar localhost no lugar de 127.0.0.1 também muda a origem e separa os dados.
+Resposta: Porque cada navegador e perfil guarda seus próprios dados, e o app não faz sincronização. Até trocar a porta ou acessar por localhost em vez de 127.0.0.1 faz o navegador usar outro armazenamento para o site.
 
 ## Reflexão final
 R.1 Sem olhar o código, explique como um dos seus componentes recebe e altera os gastos.
-Resposta: Explicação de apoio: o formulário recebe uma função do App e usa essa função para enviar os dados de um gasto válido. O App atualiza sua lista no estado e passa os gastos para a lista e o total. Assim, os componentes mostram os dados atualizados. Ainda preciso conseguir explicar isso sozinho, sem consultar o código ou este texto.
+Resposta: O formulário recebe do App uma função para adicionar gastos. Quando preencho os campos e envio um gasto válido, ele passa os dados para essa função. O App atualiza a lista no estado e envia os gastos para os componentes da lista e do total, que mostram os valores atualizados.
 R.2 Em que momento você aceitou algo sem entender?
-Resposta: Não informei um momento específico em que aceitei algo sem entender. Pedi ao agente para conduzir as etapas e redigir as respostas, mas isso não demonstra meu entendimento. Preciso revisar essa pergunta com base no que realmente entendi.
+Resposta: Foi principalmente na configuração do OpenCode. Segui as orientações e precisei perguntar onde pegar a chave, como usar os terminais e o que significavam os erros de resposta. Nessa parte, dependi bastante das explicações do agente para continuar.
 R.3 Quais decisões foram suas e quais foram do agente?
-Resposta: Eu pedi para seguir a atividade por etapas, autorizei continuar no Copilot por causa dos erros no OpenCode e pedi ajuda na redação. O agente propôs os componentes, os valores em centavos, os ids, a implementação do filtro e o uso de JSON no localStorage. Também deleguei ao agente a redação do prompt B, em vez de escrevê-lo sozinho.
+Resposta: Eu decidi continuar pelo Copilot depois dos erros no OpenCode, pedi para seguir uma missão por vez e autorizei as implementações. O agente propôs a organização dos componentes, o uso de centavos, os ids e a forma de salvar os gastos. Também pedi ajuda para escrever o prompt B e as respostas do relatório.
 R.4 O que continuaria valendo se você trocasse o modelo?
-Resposta: As regras do projeto, os requisitos da atividade, os testes e o histórico de commits continuariam valendo. Ainda seria preciso planejar, conferir as mudanças e testar valores inválidos, total, remoção, filtro e persistência.
+Resposta: Os requisitos, as regras do projeto e os testes continuariam os mesmos. Mesmo trocando o modelo, eu ainda precisaria acompanhar o plano, conferir as mudanças e verificar se o app faz o que foi pedido. O histórico de commits também continuaria mostrando a evolução do trabalho.
