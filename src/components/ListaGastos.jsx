@@ -1,4 +1,4 @@
-function ListaGastos({ gastos }) {
+function ListaGastos({ gastos, aoRemover }) {
   return (
     <section className="lista-gastos" aria-labelledby="titulo-lista">
       <div className="cabecalho-lista">
@@ -14,12 +14,23 @@ function ListaGastos({ gastos }) {
               <strong>{gasto.descricao}</strong>
               <span className="categoria-gasto">{gasto.categoria}</span>
             </div>
-            <span className="valor-gasto">
-              {(gasto.valorCentavos / 100).toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              })}
-            </span>
+            <div className="acoes-gasto">
+              <span className="valor-gasto">
+                {(gasto.valorCentavos / 100).toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}
+              </span>
+              <button
+                className="botao-remover"
+                type="button"
+                onClick={() => aoRemover(gasto.id)}
+                aria-label={`Remover ${gasto.descricao}`}
+                title={`Remover ${gasto.descricao}`}
+              >
+                <span aria-hidden="true">&#215;</span>
+              </button>
+            </div>
           </li>
         ))}
       </ul>

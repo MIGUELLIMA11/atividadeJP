@@ -14,6 +14,10 @@ function App() {
     ])
   }
 
+  function removerGasto(idGasto) {
+    definirGastos((gastosAtuais) => gastosAtuais.filter((gasto) => gasto.id !== idGasto))
+  }
+
   return (
     <main className="aplicativo">
       <header className="cabecalho">
@@ -28,7 +32,7 @@ function App() {
         <FormularioGasto aoAdicionar={adicionarGasto} />
         <div className="resumo-gastos">
           <TotalGastos gastos={gastos} />
-          <ListaGastos gastos={gastos} />
+          <ListaGastos gastos={gastos} aoRemover={removerGasto} />
         </div>
       </div>
     </main>

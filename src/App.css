@@ -202,6 +202,33 @@ input::placeholder {
   overflow-wrap: anywhere;
 }
 
+.acoes-gasto {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 0;
+}
+
+.botao-remover {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid #e4c4c6;
+  border-radius: 6px;
+  color: #a4262c;
+  background: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.botao-remover:hover {
+  background: #fff0f1;
+}
+
 .mensagem-erro {
   margin: 0;
   color: #a4262c;

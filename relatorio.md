@@ -29,9 +29,9 @@ Resposta: Porque o JavaScript guarda os números em ponto flutuante binário, e 
 
 ## Missão 3 · Remover
 M3.1 O agente mudou algo que você não pediu? O quê?
-Resposta:
+Resposta: O diff ficou limitado à remoção: função no App, botão na lista e estilos desse botão. Não mudou a validação do formulário nem adicionou outra funcionalidade.
 M3.2 Como o código sabe qual gasto remover?
-Resposta:
+Resposta: Cada gasto recebe um id único quando é adicionado. O botão passa esse id para a função de remover, que mantém na lista só os gastos com ids diferentes. Não depende da descrição nem da posição.
 
 ## Missão 4 · Filtrar
 M4.1 Qual foi o seu prompt da tentativa B?
