@@ -240,6 +240,10 @@ input::placeholder {
   line-height: 1.5;
 }
 
+.aviso-armazenamento {
+  margin-top: 24px;
+}
+
 .lista-vazia {
   margin: 24px 0 0;
   padding: 40px 12px;

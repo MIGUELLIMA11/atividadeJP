@@ -41,9 +41,9 @@ Resposta: Seguimos o plano B porque o pedido ficou mais preciso sobre a posiçã
 
 ## Bônus · Salvar
 B.1 Onde o localStorage guarda os dados?
-Resposta:
+Resposta: No armazenamento local do perfil do navegador, separado pela origem do site, que inclui protocolo, endereço e porta. O app salva os gastos como texto JSON, sem precisar de um servidor.
 B.2 Por que os gastos não aparecem em outro navegador?
-Resposta:
+Resposta: Porque cada navegador e perfil tem seu próprio armazenamento, sem sincronização pelo app. Trocar a porta ou usar localhost no lugar de 127.0.0.1 também muda a origem e separa os dados.
 
 ## Reflexão final
 R.1 Sem olhar o código, explique como um dos seus componentes recebe e altera os gastos.
