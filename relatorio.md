@@ -23,9 +23,9 @@ Resposta: Foram 10 chamadas na implementação e no fechamento da missão, da le
 
 ## Missão 2 · Total
 M2.1 Quanto deu 0,10 + 0,20 no app?
-Resposta:
+Resposta: No teste do navegador deu R$ 0,30. O app soma 10 e 20 centavos e só depois formata o resultado em reais.
 M2.2 Por que 0.1 + 0.2 não dá exatamente 0.3 no JavaScript?
-Resposta:
+Resposta: Porque o JavaScript guarda os números em ponto flutuante binário, e 0.1 e 0.2 não têm representação exata nesse formato. A soma acaba ficando 0.30000000000000004. No app, usamos centavos inteiros para evitar esse problema.
 
 ## Missão 3 · Remover
 M3.1 O agente mudou algo que você não pediu? O quê?

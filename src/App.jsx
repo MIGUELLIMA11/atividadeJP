@@ -27,7 +27,7 @@ function App() {
       <div className="area-principal">
         <FormularioGasto aoAdicionar={adicionarGasto} />
         <div className="resumo-gastos">
-          <TotalGastos />
+          <TotalGastos gastos={gastos} />
           <ListaGastos gastos={gastos} />
         </div>
       </div>
