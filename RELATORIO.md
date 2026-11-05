@@ -1,13 +1,15 @@
 # Relatório · Controle de Gastos
 
 Nome: Miguel
-Modelo usado: GPT-5.3 codex
+Modelo usado: GitHub Copilot no VS Code; o modelo selecionado nesta conversa não foi confirmado. No OpenCode, tentei GPT-5.3 Codex e Claude Sonnet, mas as chamadas falharam.
+
+Nota: continuei pelo Copilot após os erros de conexão e certificados do OpenCode. Autorizei o agente a redigir as respostas e o prompt B. A reflexão abaixo é um texto de apoio e precisa ser revisada por mim para representar meu entendimento.
 
 ## Passo 1 · AGENTS.md
 1.1 O que o /init descobriu sozinho sobre o projeto?
 Resposta: Tentei executar o /init no OpenCode, mas ele apresentou erros de conexão e não concluiu a análise. Continuei com o Copilot, que identificou React + Vite, JavaScript/JSX e Oxlint, sem um comando de testes configurado
 1.2 Qual regra você adicionou ao AGENTS.md e por quê?
-Resposta: Não altere arquivos fora da missão atual.
+Resposta: Adotei a regra sugerida "Não altere arquivos fora da missão atual", para manter cada etapa pequena e facilitar a revisão das mudanças. Pedi ao agente para adicioná-la ao arquivo.
 
 ## Passo 2 · Estrutura
 2.1 Quais arquivos o plano criou ou alterou?
@@ -47,10 +49,10 @@ Resposta: Porque cada navegador e perfil tem seu próprio armazenamento, sem sin
 
 ## Reflexão final
 R.1 Sem olhar o código, explique como um dos seus componentes recebe e altera os gastos.
-Resposta:
+Resposta: Explicação de apoio: o formulário recebe uma função do App e usa essa função para enviar os dados de um gasto válido. O App atualiza sua lista no estado e passa os gastos para a lista e o total. Assim, os componentes mostram os dados atualizados. Ainda preciso conseguir explicar isso sozinho, sem consultar o código ou este texto.
 R.2 Em que momento você aceitou algo sem entender?
-Resposta:
+Resposta: Não informei um momento específico em que aceitei algo sem entender. Pedi ao agente para conduzir as etapas e redigir as respostas, mas isso não demonstra meu entendimento. Preciso revisar essa pergunta com base no que realmente entendi.
 R.3 Quais decisões foram suas e quais foram do agente?
-Resposta:
+Resposta: Eu pedi para seguir a atividade por etapas, autorizei continuar no Copilot por causa dos erros no OpenCode e pedi ajuda na redação. O agente propôs os componentes, os valores em centavos, os ids, a implementação do filtro e o uso de JSON no localStorage. Também deleguei ao agente a redação do prompt B, em vez de escrevê-lo sozinho.
 R.4 O que continuaria valendo se você trocasse o modelo?
-Resposta:
+Resposta: As regras do projeto, os requisitos da atividade, os testes e o histórico de commits continuariam valendo. Ainda seria preciso planejar, conferir as mudanças e testar valores inválidos, total, remoção, filtro e persistência.

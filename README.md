@@ -1,16 +1,33 @@
-# React + Vite
+# Controle de Gastos
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicação React + Vite para adicionar, remover e filtrar gastos, com total em reais e persistência no navegador. Usa apenas React e APIs nativas, sem bibliotecas adicionais.
 
-Currently, two official plugins are available:
+## Executar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Dentro da pasta `controle-gastos`, no PowerShell:
 
-## React Compiler
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Abra o endereço informado pelo Vite. Fora do PowerShell, os mesmos comandos podem ser usados com `npm` no lugar de `npm.cmd`.
 
-## Expanding the Oxlint configuration
+## Verificar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```powershell
+npm.cmd run lint
+npm.cmd run build
+```
+
+Não há um script de testes automatizados. Os casos da atividade foram conferidos no navegador: descrição e valores inválidos, `12,50`, `0,10 + 0,20`, remoção do gasto do meio, inclusão de outra categoria com filtro ativo e recarregamento da página.
+
+## Dados locais
+
+Os gastos ficam no `localStorage`, na chave `controle-gastos:gastos`, como JSON. Os cálculos usam centavos inteiros.
+
+Use sempre o mesmo protocolo, endereço e porta: `localhost` e `127.0.0.1`, por exemplo, têm armazenamentos separados. O app não sincroniza dados entre navegadores ou dispositivos. O filtro começa em Todas ao recarregar; todos os gastos são preservados.
+
+## Atividade
+
+O desenvolvimento continuou no GitHub Copilot após falhas de conexão e certificados no OpenCode. As respostas e ressalvas estão em [RELATORIO.md](RELATORIO.md); a reflexão é um texto de apoio que precisa de revisão do aluno. O histórico do Git separa a estrutura, cada missão e o bônus.
